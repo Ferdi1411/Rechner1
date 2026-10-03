@@ -24,8 +24,8 @@ req(
 )
 
 req(
-"for(let n of [['c1',11],['c2',15],['c3',11]]){const e=$('#'+n[0]);for(let i=0;i<n[1];i++)e.appendChild(document.createElement('i'))}",
-"for(let n of [['c1',11],['c2',15],['c3',11]]){const e=$('#'+n[0]);for(let i=0;i<n[1];i++)e.appendChild(document.createElement('i'))}let lastVoiceLevel=0;function lightColumn(id,count){const seg=[...document.querySelectorAll('#'+id+' i')];seg.forEach((x,i)=>x.classList.toggle('lit',i<count))}function setVoiceLevel(raw){let level=Math.max(0,Math.min(1,Number(raw)||0));lastVoiceLevel=level;if(level<.035){lightColumn('c1',0);lightColumn('c2',0);lightColumn('c3',0);return}const center=Math.max(1,Math.round(level*15));const sideBase=Math.max(0,Math.round(level*10));const wobble=Math.round(Math.sin(Date.now()/43)*1.5);lightColumn('c2',center);lightColumn('c1',Math.max(0,Math.min(11,sideBase+wobble)));lightColumn('c3',Math.max(0,Math.min(11,sideBase-wobble)))}",
+"for(const [id,n] of [['c1',9],['c2',14],['c3',9]]){const e=$('#'+id);for(let i=0;i<n;i++)e.appendChild(document.createElement('i'))}",
+"for(const [id,n] of [['c1',9],['c2',14],['c3',9]]){const e=$('#'+id);for(let i=0;i<n;i++)e.appendChild(document.createElement('i'))}let lastVoiceLevel=0;function lightColumn(id,count){const seg=[...document.querySelectorAll('#'+id+' i')];seg.forEach((x,i)=>x.classList.toggle('lit',i<count))}function setVoiceLevel(raw){let level=Math.max(0,Math.min(1,Number(raw)||0));lastVoiceLevel=level;if(level<.035){lightColumn('c1',0);lightColumn('c2',0);lightColumn('c3',0);return}const c2=document.querySelectorAll('#c2 i').length,c1=document.querySelectorAll('#c1 i').length,c3=document.querySelectorAll('#c3 i').length;const center=Math.max(1,Math.round(level*c2));const sideBase=Math.max(0,Math.round(level*Math.min(c1,c3)));const wobble=Math.round(Math.sin(Date.now()/43)*1.5);lightColumn('c2',center);lightColumn('c1',Math.max(0,Math.min(c1,sideBase+wobble)));lightColumn('c3',Math.max(0,Math.min(c3,sideBase-wobble)))}",
 "voice JS"
 )
 
