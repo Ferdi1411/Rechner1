@@ -35,6 +35,9 @@ jobs:
           base64 -d /tmp/jarvis.b64 > /tmp/jarvis.zip
           unzip -q /tmp/jarvis.zip -d "$GITHUB_WORKSPACE"
 
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Ensure Android SDK 35
         shell: bash
         run: |
